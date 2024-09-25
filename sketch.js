@@ -95,6 +95,7 @@ function draw() {
   let color1 = '#5151cf'
   let color2 = '#cfb651'
   let color3 = '#96e7f2'
+  let color4 = '#4139db'
   x += deltaX;
   let length = 10
   for(let a = 0; a < windowWidth; a += 8*length){
@@ -107,7 +108,7 @@ function draw() {
          }
       else{
         flower( color3, color1, a, b, 12, x*d*e+45);
-        flower( color1, color2, a, b, 6, x*d*e);
+        flower( color4, color2, a, b, 6, x*d*e);
       }
       }
       
