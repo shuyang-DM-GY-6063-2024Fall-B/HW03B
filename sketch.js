@@ -48,7 +48,7 @@ let speed = 5;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  // angleMode(DEGREES); 
+  angleMode(DEGREES); 
   frameRate(30);
 }
 
@@ -95,10 +95,12 @@ function draw() {
   x += deltaX;
   let length = 10
   for(let a = 0; a < windowWidth; a += 8*length){
-    for(let b = 0; b < windowHeight; b += 4*length){
-      flower('black', 'white', a, b, 10, 0);
+    for(let b = 0; b < windowHeight; b += 8*length){
+      let d = a/8/length%2+1
+      let e = b/length/8%2+1
+      flower('black', 'white', a, b, 10, -x*d*e);
    }
   }
-  flower('black', 'white', windowWidth / 2, windowHeight / 2, 10, x);
+  // flower('black', 'white', windowWidth / 2, windowHeight / 2, 10, x);
 }
 
