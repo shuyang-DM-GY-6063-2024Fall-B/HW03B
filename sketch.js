@@ -86,10 +86,6 @@ function draw() {
       ellipse(0,3*length, 4)
       line(0,0,-3*length,0)
       ellipse(-3*length,0, 4)
-
-
-
-
       pop()
     }
     pop()
@@ -97,12 +93,12 @@ function draw() {
   }
   let deltaX = speed * deltaTime / 1000;
   x += deltaX;
-for(let a = 0; a < windowWidth; a += 8*length){
-  for(let b = 0; b < windowHeight; a += 4*length){
-    flower('black', 'white', a, b, 10, 0);
+  let length = 10
+  for(let a = 0; a < windowWidth; a += 8*length){
+    for(let b = 0; b < windowHeight; b += 4*length){
+      flower('black', 'white', a, b, 10, 0);
+   }
   }
-}
-
   flower('black', 'white', windowWidth / 2, windowHeight / 2, 10, x);
 }
 
