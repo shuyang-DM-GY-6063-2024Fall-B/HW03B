@@ -53,7 +53,7 @@ function setup() {
 }
 
 function draw() {
-  background(71, 158, 151);
+  background('#0e1361');
   function flower(color1,color2,x,y,length,angle){
     push();
     noStroke();
@@ -94,8 +94,10 @@ function draw() {
   let deltaX = speed * deltaTime / 1000;
   let color1 = '#5151cf'
   let color2 = '#4287f5'
-  let color3 = '#96e7f2'
-  let color4 = '#4139db'
+  let color3 = '#2dc0d6'
+  let color4 = '#4139db' // dark blue
+  let color5 = '#fad43c'// yellow
+  let color6 = '#e8a438'// dark yellow
   x += deltaX;
   let length = 10
   for(let a = 0; a < windowWidth; a += 8*length){
@@ -104,11 +106,11 @@ function draw() {
       let e = b/length/8%2+1
       // let direction = random([1, -1])
       if((e+d)%2 === 1){
-        flower(color2, color1, a, b, 6, -x*d*e);
+        flower(color2, color4, a, b, 6, -x*d*e*2);
          }
       else{
-        flower( color3, color1, a, b, 12, x*d*e+45);
-        flower( color4, color2, a, b, 6, x*d*e);
+        flower( color3, color5, a, b, 12, x*d*e+45);
+        flower( color1, color6, a, b, 6, x*d*e);
       }
       }
       
