@@ -43,11 +43,14 @@
 // }
 
 
+let x = 0;
+let speed = 5;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   angleMode(DEGREES); 
-  }
-
+  frameRate(30);
+}
 
 function draw() {
   background(71, 158, 151);
@@ -58,31 +61,48 @@ function draw() {
 
     translate(x, y);
     rotate(angle);
-    for(a = 0;a < 270 ;a +=90){
+    for(a = 0;a < 360 ;a += 90){
       push();
       rotate(a);
       beginShape();
-      vertex(0, 4*length);
+      vertex(0, 0);
       vertex(-length, 4*length);
       vertex(-3*length, 4*length);
       vertex(-3*length, 3*length);
       vertex(-4*length, 3*length);
       vertex(-4*length, length);
-      vertex(0, 4*length);
+      vertex(0, 0);
       endShape();
       fill(color2)
       triangle(0,0,-5*length,0,-3*length,length)
       triangle(0,0,0,5*length,-length,3*length)
+      stroke(color2)
+      strokeWeight(0.75)
+      line(0,0,-1.5*length+(-windowWidth/2)/windowWidth*2*length,1.5*length+(mouseY-windowHeight/2)/windowHeight*2*length)
+      ellipse(-1.5*length+(-windowWidth/2)/windowWidth*2*length,1.5*length+(mouseY-windowHeight/2)/windowHeight*2*length, 3)
+      stroke(color1)
+      fill(color1)
+      line(0,0,0,3*length)
+      ellipse(0,3*length, 4)
+      line(0,0,-3*length,0)
+      ellipse(-3*length,0, 4)
+
+
+
 
       pop()
-
     }
     pop()
-  flower('black','white',windowWidth/2,windowHeight/2,10,0)  
 
   }
-
-
-
-
+  let deltaX = speed * deltaTime / 1000;
+  x += deltaX;
+for(let a = 0; a < windowWidth; a += 8*length){
+  for(let b = 0; b < windowHeight; a += 4*length){
+    flower('black', 'white', a, b, 10, x);
+  }
 }
+
+  flower('black', 'white', windowWidth / 2, windowHeight / 2, 10, x);
+}
+
