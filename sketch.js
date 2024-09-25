@@ -48,7 +48,7 @@ let speed = 5;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  angleMode(DEGREES); 
+  // angleMode(DEGREES); 
   frameRate(30);
 }
 
