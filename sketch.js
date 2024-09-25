@@ -99,7 +99,7 @@ function draw() {
   x += deltaX;
 for(let a = 0; a < windowWidth; a += 8*length){
   for(let b = 0; b < windowHeight; a += 4*length){
-    flower('black', 'white', a, b, 10, x);
+    flower('black', 'white', a, b, 10, 0);
   }
 }
 
