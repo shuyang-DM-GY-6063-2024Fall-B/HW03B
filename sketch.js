@@ -78,28 +78,39 @@ function draw() {
       triangle(0,0,0,5*length,-length,3*length)
       stroke(color2)
       strokeWeight(0.75)
-      line(0,0,-1.5*length+(-windowWidth/2)/windowWidth*2*length,1.5*length+(mouseY-windowHeight/2)/windowHeight*2*length)
-      ellipse(-1.5*length+(-windowWidth/2)/windowWidth*2*length,1.5*length+(mouseY-windowHeight/2)/windowHeight*2*length, 3)
+      line(0,0,-1.5*length+(mouseX-windowWidth/2)/windowWidth*2*length,1.5*length+(mouseY-windowHeight/2)/windowHeight*2*length)
+      ellipse(-1.5*length+(mouseX-windowWidth/2)/windowWidth*2*length,1.5*length+(mouseY-windowHeight/2)/windowHeight*2*length, length/3)
       stroke(color1)
       fill(color1)
-      line(0,0,0,3*length)
-      ellipse(0,3*length, 4)
-      line(0,0,-3*length,0)
-      ellipse(-3*length,0, 4)
+      line(0,0,0,3*length+(mouseX-windowWidth/2)/windowWidth*length)
+      ellipse(0,3*length+(mouseX-windowWidth/2)/windowWidth*length, length/3)
+      line(0,0,-3*length-(mouseX-windowWidth/2)/windowWidth*length,0)
+      ellipse(-3*length-(mouseX-windowWidth/2)/windowWidth*length,0, length/3)
       pop()
     }
     pop()
 
   }
   let deltaX = speed * deltaTime / 1000;
+  let color1 = '#5151cf'
+  let color2 = '#cfb651'
+  let color3 = '#96e7f2'
   x += deltaX;
   let length = 10
   for(let a = 0; a < windowWidth; a += 8*length){
     for(let b = 0; b < windowHeight; b += 8*length){
       let d = a/8/length%2+1
       let e = b/length/8%2+1
-      flower('black', 'white', a, b, 10, -x*d*e);
-   }
+      // let direction = random([1, -1])
+      if((e+d)%2 === 1){
+        flower(color2, color1, a, b, 6, -x*d*e);
+         }
+      else{
+        flower( color3, color1, a, b, 12, x*d*e+45);
+        flower( color1, color2, a, b, 6, x*d*e);
+      }
+      }
+      
   }
   // flower('black', 'white', windowWidth / 2, windowHeight / 2, 10, x);
 }
