@@ -93,7 +93,7 @@ function draw() {
   }
   let deltaX = speed * deltaTime / 1000;
   let color1 = '#5151cf'
-  let color2 = '#cfb651'
+  let color2 = '#4287f5'
   let color3 = '#96e7f2'
   let color4 = '#4139db'
   x += deltaX;
