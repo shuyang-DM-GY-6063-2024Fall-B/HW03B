@@ -1,3 +1,5 @@
+
+//The first try to make some grid pattern with interactive effect but the outcome it's not so good.
 // let angles = []; 
 // let length = 100;
 
@@ -42,6 +44,9 @@
 //   }
 // }
 
+// Second try
+
+
 
 let x = 0;
 let speed = 5;
@@ -52,8 +57,10 @@ function setup() {
   frameRate(30);
 }
 
+
 function draw() {
   background('#0e1361');
+  // use the function to draw a flower
   function flower(color1,color2,x,y,length,angle){
     push();
     noStroke();
@@ -63,54 +70,60 @@ function draw() {
 
     translate(x, y);
     rotate(angle);
+    // draw the single petal and stamen,and use for-loop to create the whole flower.
+    // I try to make stamens move with mouse be it seems stiff and I don't kown how to improve it.
     for(a = 0;a < 360 ;a += 90){
       push();
       rotate(a);
       beginShape();
       vertex(0, 0);
       vertex(-length, 4*length);
-      vertex(-3*length, 4*length);
+      vertex(-3*length, 4*length); 
       vertex(-3*length, 3*length);
       vertex(-4*length, 3*length);
       vertex(-4*length, length);
       vertex(0, 0);
       endShape();
-      fill(color2)
-      triangle(0,0,-5*length,0,-3*length,length)
-      triangle(0,0,0,5*length,-length,3*length)
-      stroke(color2)
-      strokeWeight(0.75)
-      line(0,0,-1.5*length+(mouseX-windowWidth/2)/windowWidth*2*length,1.5*length+(mouseY-windowHeight/2)/windowHeight*2*length)
-      ellipse(-1.5*length+(mouseX-windowWidth/2)/windowWidth*2*length,1.5*length+(mouseY-windowHeight/2)/windowHeight*2*length, length/3)
-      stroke(color1)
-      fill(color1)
-      line(0,0,0,3*length+(mouseX-windowWidth/2)/windowWidth*length)
-      ellipse(0,3*length+(mouseX-windowWidth/2)/windowWidth*length, length/3)
-      line(0,0,-3*length-(mouseX-windowWidth/2)/windowWidth*length,0)
-      ellipse(-3*length-(mouseX-windowWidth/2)/windowWidth*length,0, length/3)
-      pop()
+      fill(color2);
+      triangle(0,0,-5*length,0,-3*length,length);
+      triangle(0,0,0,5*length,-length,3*length);
+      stroke(color2);
+      strokeWeight(0.75);
+      line(0,0,-1.5*length+(mouseX-windowWidth/2)/windowWidth*2*length,1.5*length+(mouseY-windowHeight/2)/windowHeight*2*length);
+      ellipse(-1.5*length+(mouseX-windowWidth/2)/windowWidth*2*length,1.5*length+(mouseY-windowHeight/2)/windowHeight*2*length, length/3);
+      stroke(color1);
+      fill(color1);
+      line(0,0,0,3*length+(mouseX-windowWidth/2)/windowWidth*length);
+      ellipse(0,3*length+(mouseX-windowWidth/2)/windowWidth*length, length/3);
+      line(0,0,-3*length-(mouseX-windowWidth/2)/windowWidth*length,0);
+      ellipse(-3*length-(mouseX-windowWidth/2)/windowWidth*length,0, length/3);
+      pop();
     }
-    pop()
-
+    pop();
   }
+  //define all the colors I will use
   let deltaX = speed * deltaTime / 1000;
-  let color1 = '#5151cf'
-  let color2 = '#4287f5'
-  let color3 = '#2dc0d6'
-  let color4 = '#4139db' // dark blue
-  let color5 = '#fad43c'// yellow
-  let color6 = '#e8a438'// dark yellow
+  let color1 = '#5151cf';
+  let color2 = '#4287f5';
+  let color3 = '#2dc0d6';
+  let color4 = '#4139db';// dark blue
+  let color5 = '#fad43c';// yellow
+  let color6 = '#e8a438';// dark yellow
   x += deltaX;
-  let length = 10
+  let length = 10;
+
+  // draw flower grids
   for(let a = 0; a < windowWidth; a += 8*length){
     for(let b = 0; b < windowHeight; b += 8*length){
-      let d = a/8/length%2+1
-      let e = b/length/8%2+1
+      //make flowers rotate in various speeds and directions
+      let d = a/8/length%2+1;
+      let e = b/length/8%2+1;
       // let direction = random([1, -1])
       if((e+d)%2 === 1){
         flower(color2, color4, a, b, 6, -x*d*e*5);
          }
       else{
+      //make flowers scale up and down based on time changes
         flower( color3, color5, a, b, 12- Math.abs(Math.sin(x / 6)) * 2, x*d*e+45);
         flower( color1, color6, a, b, 5 + Math.abs(Math.sin(x / 6)), -x*d*e);
       }
