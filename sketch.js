@@ -57,8 +57,8 @@ function draw() {
   function flower(color1,color2,x,y,length,angle){
     push();
     noStroke();
-    // stroke(color2);
-    // strokeWeight(2);
+    stroke(color2);
+    strokeWeight(1);
     fill(color1);
 
     translate(x, y);
@@ -108,11 +108,11 @@ function draw() {
       let e = b/length/8%2+1
       // let direction = random([1, -1])
       if((e+d)%2 === 1){
-        flower(color2, color4, a, b, 4, -x*d*e*5);
+        flower(color2, color4, a, b, 6, -x*d*e*5);
          }
       else{
-        flower( color3, color5, a, b, 12, x*d*e*2+45);
-        flower( color1, color6, a, b, 6, -x*d*e);
+        flower( color3, color5, a, b, 12- Math.abs(Math.sin(x / 6)) * 2, x*d*e+45);
+        flower( color1, color6, a, b, 5 + Math.abs(Math.sin(x / 6)), -x*d*e);
       }
       }
       
