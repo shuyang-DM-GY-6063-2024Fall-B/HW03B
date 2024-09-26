@@ -1,5 +1,5 @@
 
-//The first try to make some grid pattern with interactive effect but the outcome it's not so good.
+// // The first try to make some grid pattern with interactive effect but the outcome it's not so good.
 // let angles = []; 
 // let length = 100;
 
@@ -39,7 +39,7 @@
 //       let i = a / length;
 //       let j = b / length;
 //       let angle = angles[i][j]; 
-//       grid('black', 'white', a, b, length, 30, angle);
+//       grid('#e8a438', '#4139db', a, b, length, 30, angle);
 //     }
 //   }
 // }
